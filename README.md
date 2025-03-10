@@ -1,1 +1,1 @@
-## Deployed Link: [Link Text](https://astuto-soham.netlify.app/)
+## Deployed Link: [Link](https://astuto-soham.netlify.app/)
