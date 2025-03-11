@@ -14,6 +14,10 @@ type ReactTableProps<T extends Record<string, any>> = {
   enableRowSelection?: boolean;
   positionToolbarAlertBanner?: "bottom" | "top" | "none";
   enableColumnActions?: boolean;
+  enableColumnResizing?: boolean;
+  columnFilterDisplayMode?: 'popover' | 'custom' | 'subheader';
+  muiPaginationProps?: any;
+  paginationDisplayMode?: 'custom' | 'pages' | 'default';
 };
 
 const ReactTable = <T extends Record<string, any>>({
@@ -23,6 +27,10 @@ const ReactTable = <T extends Record<string, any>>({
   enableRowSelection = false,
   positionToolbarAlertBanner = "none",
   enableColumnActions = false,
+  enableColumnResizing = false,
+  columnFilterDisplayMode = 'popover',
+  muiPaginationProps,
+  paginationDisplayMode = 'pages',
 }: ReactTableProps<T>) => {
   const table = useMaterialReactTable<T>({
     data,
@@ -32,17 +40,11 @@ const ReactTable = <T extends Record<string, any>>({
     positionToolbarAlertBanner,
     enableTopToolbar: false,
     enableFilterMatchHighlighting: false,
-    enableColumnResizing: true,
-    columnFilterDisplayMode: 'popover',
-    muiPaginationProps: {
-      shape: 'rounded',
-      showRowsPerPage: false,
-      showFirstButton: false,
-      showLastButton: false,
-      className: 'custom-bottom-toolbar',
-    },
+    enableColumnResizing,
+    columnFilterDisplayMode,
+    muiPaginationProps,
     muiTableContainerProps:{ sx: { minHeight: '700px' } },
-    paginationDisplayMode: 'pages',
+    paginationDisplayMode,
     enableColumnActions,
   });
 
